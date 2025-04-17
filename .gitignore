@@ -28,3 +28,4 @@ Thumbs.db
 
 dist/
 django_layered_start.egg-info/
+testing
