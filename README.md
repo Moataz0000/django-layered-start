@@ -1,102 +1,115 @@
-# Django Layered Start
+# Django Layered Start 🏗️
 
-**Django Layered Start** is a powerful CLI tool that helps you kickstart your Django projects by automatically creating a clean, SOLID‑compliant layered architecture. This package sets up your Django project and apps with separate layers for presentation, application, domain, and infrastructure, providing you with an organized and scalable foundation for your development.
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Django](https://img.shields.io/badge/Django-4.0+-green.svg)](https://www.djangoproject.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
----
+A Django starter project that applies **clean architecture** principles through a structured layered approach to build more maintainable web applications.
 
-## 🚀 Features
+## 🏛️ Architecture Overview
 
-- **Automated Project Setup:** Instantly generate a new Django project using `django-admin`.
-- **Layered App Creation:** Create Django apps with a predefined folder structure:
-  - **Presentation:** Contains view logic and URL configurations.
-  - **Application:** Houses business logic and service layers.
-  - **Domain:** Includes domain‑specific utilities, selectors, and validators.
-  - **Infrastructure:** Manages models and integration with external systems.
-- **SOLID Principles:** Ensures your code remains clean, maintainable, and scalable by following core SOLID design principles.
-- **Interactive CLI Interface:** A guided command‑line experience for setting up your project and apps without hassle.
+This project provides a structured layered architecture that separates concerns:
 
----
+```
+your_app/
+├── presentation/       # Handles how data is presented to the user
+│   ├── views.py        # View functions/classes
+│   ├── urls.py         # URL routing
+│   └── serializers.py  # API serializers
+│
+├── application/        # Contains business logic and use cases
+│   └── services.py     # Service classes/functions
+│
+├── domain/             # Core domain logic and business rules
+│   ├── validators.py   # Domain validation
+│   ├── selectors.py    # Query operations
+│   └── utilities.py    # Domain-specific utilities
+│
+└── infrastructure/     # External interfaces like DB, APIs, etc.
+    └── models.py       # Django ORM models
+```
 
-## 🛠 Installation
+## ✨ Features
 
-To install the package from PyPI, run:
+- **Clean Organization**: Separates your code into logical layers
+- **Improved Maintainability**: Makes your code easier to understand and modify
+- **Better Testability**: Simplifies unit testing by separating concerns
+- **Enhanced Collaboration**: Developers can work on different layers simultaneously
+- **Environment Setup**: Includes a ready-to-use `.env` file structure
+- **Requirements Management**: Separate files for local and production dependencies
+
+## 🚀 Getting Started
+
+### Installation
 
 ```bash
 pip install django-layered-start
 ```
 
-Then start the CLI tool:
+### Project Setup
 
 ```bash
-django-layered-start
+# Create a new Django project
+python -m django_layered_start startproject myproject
+
+# Create a new app with layered structure
+python -m django_layered_start startapp myapp
 ```
 
----
+### Project Structure
 
-## 💻 Creating the Project & Apps
+After creating a project and app, you'll have a structure like:
 
-Follow the interactive prompts to scaffold your project:
-
-```text
-📦 Project name: myproject
-✅ Django project "myproject" created!
-
-🧱 App name (or N to stop): accounts
-📂 App "accounts" created with layered structure.
-
-❓ Do you want to add another app? (Y/N): Y
-🧱 App name (or N to stop): products
-📂 App "products" created with layered structure.
-
-❓ Do you want to add another app? (Y/N): N
 ```
-
----
-
-## 📁 Project Structure
-
-After running the CLI, your directory tree will look like this:
-
-```text
 myproject/
 ├── manage.py
 ├── myproject/
-│   └── settings.py
-├── accounts/
+│   └── settings.py, urls.py, etc.
+├── myapp/
 │   ├── presentation/
-│   │   ├── __init__.py
-│   │   ├── views.py
-│   │   └── urls.py
 │   ├── application/
-│   │   ├── __init__.py
-│   │   └── services.py
 │   ├── domain/
-│   │   ├── __init__.py
-│   │   ├── validators.py
-│   │   ├── selectors.py
-│   │   └── utilities.py
 │   └── infrastructure/
-│       ├── __init__.py
-│       └── models.py
-└── products/
-    ├── presentation/
-    │   ├── __init__.py
-    │   ├── views.py
-    │   └── urls.py
-    ├── application/
-    │   ├── __init__.py
-    │   └── services.py
-    ├── domain/
-    │   ├── __init__.py
-    │   ├── validators.py
-    │   ├── selectors.py
-    │   └── utilities.py
-    └── infrastructure/
-        ├── __init__.py
-        └── models.py
+└── requirements/
+    ├── local.text
+    └── production.text
 ```
 
----
+## 🔍 Usage Guidelines
 
-**Django Layered Start** gives you a robust, SOLID‑driven foundation from day one — saving time and enforcing best practices in every app you build.
+### Presentation Layer
+
+The presentation layer handles how data is presented to users and how they interact with your application. It includes:
+
+- **Views**: Django view functions or class-based views
+- **URLs**: URL routing patterns
+- **Serializers**: For API response formatting (using Django REST Framework)
+
+### Application Layer
+
+The application layer contains business logic and use cases. It orchestrates the flow of data and implements business rules:
+
+- **Services**: Functions that implement business operations and use cases
+
+### Domain Layer
+
+The domain layer represents your core business logic and rules:
+
+- **Validators**: Domain validation rules
+- **Selectors**: Query operations for retrieving domain entities
+- **Utilities**: Helper functions specific to your domain
+
+### Infrastructure Layer
+
+The infrastructure layer handles external interfaces and technical details:
+
+- **Models**: Django ORM models for database access
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
